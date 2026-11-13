@@ -1,9 +1,12 @@
 # MLflow homework screenshots (ecommerce-start)
 
-Скриншоты прогонов на kvm8, MLflow: http://168.231.116.71:5000
+Живой UI: Docker `ghcr.io/mlflow/mlflow:v3.12.0` на kvm8, порт **5002**.
 
-- `01-runs.png` — Task 1–2: runs эксперимента `ecommerce-purchase` (learning_rate, accuracy, F1)
-- `02-registry.png` — Model Registry `ecommerce-purchase-clf`: v1 `@champion`, v2 `@challenger`
-- `03-agent-tags.png` — Task 3: теги агента (`agent_decision=keep_champion`, lift 1.92% < 5%)
+- `01-runs.png` — эксперимент `ecommerce-purchase`: `gb_lr0.05`, `gb_lr0.1` (champion), `gb_lr0.2`, parent `GridSearch`
+- `02-registry.png` — Model Registry `ecommerce-purchase-clf`
+- `03-agent-tags.png` — теги агента: `keep_champion`, F1 0.8428 → 0.8696, lift 3.17% < 5%
+- `04-gridsearch.png` — nested Optuna: child runs `trial_0`…`trial_7`, `best_f1_score=0.8696`
+- `05-confusion-matrix.png` — confusion matrix лучшего run Task 1 (`lr=0.1`)
+- `05b-cm-lr0.05.png`, `05c-cm-lr0.2.png` — остальные матрицы Task 1
 
-Код: отдельный репозиторий с `src/train.py`, `src/tune.py`, `src/promote_agent.py`.
+Код: https://github.com/Leonid328/ecommerce-mlflow-hw
